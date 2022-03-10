@@ -1,0 +1,78 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+    {{include './common/header.art'}}
+    <!-- 主体内容 -->
+    <div class="content">
+        {{include './common/aside.art'}}
+
+        <div class="main">
+            <!-- 分类标题 -->
+            <div class="title">
+                <h4>学生会志愿活动记录</h4>
+            </div>
+            <!-- /分类标题 -->
+            <form class="form-container" action="/admin/list-add" method="post">
+                <div class="form-group">
+                    <label>志愿活动主题: </label>
+                    <input class="form-control" type="text" autofocus placeholder="活动名称" name="name">
+                </div>
+                <div class="form-group">
+                    <label>负责老师:</label>
+                   <input class="form-control"  type="text" placeholder="可以为空" name="teacher">
+                </div>
+                <div class="form-group">
+                    <label>活动地点:</label>
+                   <input class="form-control" type="text" placeholder="请输入活动地点" name="place">
+                </div>
+                <div class="form-group">
+                    <label>部门</label>
+                    <select class="form-control" name="division">
+					<option value="人事">人事管理部</option>
+					<option value="外联">外联部</option>
+					<option value="学术">学术部</option>
+					<option value="信息">信息部</option>
+					<option value="权益">权益部</option>
+					<option value="文体">文体部</option>
+				</select>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>志愿者福利</label>
+                    <input type="checkbox" value="志愿者证书" name="welfare"> 志愿者证书
+				    <input type="checkbox" value="志愿时长" name="welfare"> 志愿时长
+				    <input type="checkbox" value="志愿者补贴" name="welfare"> 志愿者补贴
+                </div>
+                <div class="form-group">
+                    <label>活动开始日期:</label>
+                   <input class="form-control"  type="datetime-local"  name="enterDate">
+                </div>               
+                 <div class="form-group">
+                    <label>活动终止日期:</label>
+                   <input class="form-control"  type="datetime-local"  name="endDate">
+                </div>
+                <div class="form-group">
+                    <label>志愿者名单: <span class="add">添加志愿者</span></label>
+                   	<div class="vollist">
+				        <input class="form-control" type="text" placeholder="请输入志愿者姓名" name="vol">
+		        	</div>
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="btn btn-primary" value="提交">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /主体内容 -->
+{{/block}}
+
+{{block 'script'}}
+    <script type="text/javascript">
+$(function() {					
+    $('.add').on("click", function() {
+        var li = $("<input class='form-control' type='text' placeholder='请输入志愿者姓名' name='vol'>");
+        $(".vollist").children('input:first').before(li); // 内部添加并且放到内容的最前面		
+        });
+})
+    </script>
+{{/block}}

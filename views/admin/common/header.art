@@ -1,0 +1,29 @@
+	<!-- 头部 -->
+    <div class="header">
+    	<!-- 网站标志 -->
+        <div class="logo fl">
+            CES学生会     <span class="glyphicon glyphicon-chevron-down toparror1"></span>
+
+        </div>
+        <div class="ces ">
+				<img src="images/logo.png" alt="计算机学院学生会">
+        </div>
+
+
+        <!-- /网站标志 -->
+        <!-- 用户信息 -->
+        <div class="info">
+            <div class="profile dropdown fr">
+                <span class="btn dropdown-toggle" data-toggle="dropdown">
+					{{userInfo && userInfo.username}}
+					<span class="caret"></span>
+                </span>
+                <ul class="dropdown-menu">
+                    <li><a href="user-edit.html">个人资料</a></li>
+                    <li><a href="#">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /用户信息 -->
+    </div>
+    <!-- /头部 -->

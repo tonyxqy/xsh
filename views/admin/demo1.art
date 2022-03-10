@@ -1,0 +1,56 @@
+{{extend './common/layout.art'}}
+
+{{block 'link'}}
+    <link rel="stylesheet" href="/admin/css/index.css">
+{{/block}}
+
+{{block 'main'}}
+    {{include './common/header.art'}}
+    <!-- 主体内容 -->
+    <div class="content">
+        {{include './common/aside.art'}}
+        <div class="main">
+   <ul class="nav nav-tabs mynavposition">
+            <li role="presentation" class="active" id="showWord"><a href="#">转录文字</a></li>
+            <li role="presentation" id="showTree"><a href="#">演讲思维导图</a></li>
+            <li role="presentation" id="showFish"><a href="#">演讲鱼骨图</a></li>
+        </ul>
+        
+        <div class="input-group input-group-lg" style="margin-top:20px">
+            <span class="input-group-addon" id="sizing-addon1">演讲主题名</span>
+            <input type="text" class="form-control" placeholder="输入演讲主题名后可开始语音识别" aria-describedby="sizing-addon1">
+        </div>
+        <div class="content-item" id="audiostart"  style="display:none">
+            <button class="button" id="start">开始识别</button>
+            <div class="connecting display-none" id="connecting">建立连接中...</div>
+            <span class="recognizing display-none" id="recognizing">识别中...</span>
+            <button class="button end-btn" id="end">结束识别</button>
+            <div class="card" style="width: 18rem; display:none">
+                <img src="" class="card-img-top"style="width: 100%;height:100%" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">这是测试用例</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        </div>
+        </div>
+        <div class="content-item" id="bodycontent">
+            <div id="recognizeText" class="recognize-content"></div>
+            <div id="treecontainer" class="treecontainer">
+                <div id="product_tree"></div>
+        </div>
+        </div>
+     
+        
+    </div>
+{{/block}}
+
+{{block 'script'}}
+<script src="https://cdn.bootcss.com/d3/3.2.7/d3.min.js"></script>
+<script src="/admin/js/jquery.js"></script>
+<script src="/admin/js/config.js"></script>
+<script src="/admin/js/asrauthentication.js"></script>
+<script src="/admin/js/speechrecognizer.js"></script>
+<script src="/admin/js/tree.js"></script>
+<script type="module" src="/admin/js/main.js"></script>
+{{/block}}

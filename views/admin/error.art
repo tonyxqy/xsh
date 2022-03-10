@@ -1,0 +1,8 @@
+{{extend './common/layout.art'}}
+{{block 'main'}}
+    {{include './common/header.art'}}   
+    <div class="content">
+		{{include './common/aside.art'}}
+      <p class="errormessage error">{{msg}}</p>
+    </div>
+{{/block}}

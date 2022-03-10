@@ -1,0 +1,62 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+	{{include './common/header.art'}}
+	<!-- 主体内容 -->
+	<div class="content">
+		{{include './common/aside.art'}}
+		<div class="main">
+			<div class="title">
+                <h4>志愿记录</h4>
+                <span>志愿活动记录</span>
+                <a href="/admin/list-edit" class="btn btn-primary new">发部新活动</a>
+        </div>
+            <!-- /分类标题 -->
+            <!-- 内容列表 -->
+            <table class="table table-striped table-bordered table-hover custom-table">
+            <thead>
+                <tr>
+					<th>志愿活动主题</th>
+					<th>负责老师</th>
+					<th>活动地点</th>
+					<th>志愿者福利</th>
+					<th>负责部门</th>
+				</tr>
+				<tr>
+					<th>活动开始时间</th>
+					<th>活动结束时间</th>
+				</tr>
+            </thead>
+                <tbody>
+  					 {{each volenteers}}
+					   <tr><td colspan='5'></td></tr>
+					<tr>
+						<td>{{$value.name}}</td>
+						<td>{{$value.teacher}}</td>
+						<td>{{$value.place}}</td>
+						<td>
+							{{each $value.welfare}}
+								<span>{{$value}}</span>
+							{{/each}}
+						</td>
+						<td>{{$value.division}}</td>
+					</tr>
+				<tr>
+					<th>{{dateFormat($value.enterDate, 'yyyy-mm-dd HH:mm:ss')}}</th>
+					<th>{{dateFormat($value.endDate, 'yyyy-mm-dd HH:mm:ss')}}</th>
+									<th>					
+					{{each $value.vol}}
+					<span>{{$value}}</span>
+					{{/each}}
+			</th>
+				</tr>
+				{{/each}}
+                </tbody>
+            </table>
+	
+
+			</div>
+			</div>
+	<!-- /主体内容 -->
+
+{{/block}}

@@ -1,0 +1,56 @@
+.content-box .content{
+    width: 100%;
+    overflow: hidden;
+    margin: 100px auto;
+}
+.content .content-item {
+    margin: auto;
+    text-align: center;
+}
+.left-content {
+    width: 100%;
+    height: 300px;
+}
+.mynavposition{
+    position: relative;
+    top: 0px;
+    left: 200px;
+    height: 38px;
+}
+.connecting {
+    color: #999;
+    margin: 20px ;
+}
+.recognizing {
+    color: #999;
+    margin: 20px ;
+}
+.content .content-item .button {
+    background: #187cff;
+    border: 1px solid #478eea;
+    color: #fff;
+    text-align: center!important;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+    margin: 20px;
+}
+.button.end-btn {
+    display: none;
+}
+.recognize-content {
+    height: 500px;
+    width:  700px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: auto;
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+.display-none {
+    display: none;
+}

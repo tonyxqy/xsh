@@ -1,0 +1,102 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+
+    {{include './common/header.art'}}
+    <!-- 主体内容 -->
+    <div class="content">
+        {{include './common/aside.art'}}
+
+        <div class="main">
+            <!-- 分类标题 -->
+            <div class="title">
+                <h4>编辑者{{userInfo && userInfo.username}}</h4>
+                <p class="tips" >{{message ? message :'请注意一定不要填写上海大学统一身份认证的密码,谨防泄露'}}</p>
+                <div class="alert alert-warning alert-dismissible" role="alert" id="wmess">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" class="closebtn">&times;</span></button>
+                    <strong>Warning!</strong> 
+                </div>
+            </div>
+            <!-- /分类标题 -->
+            <form class="form-container" action="{{link}}" method="post">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input id="name" type="text" name="username" class="form-control" placeholder="请输入用户名" value="{{user&&user.username}}">
+                </div>
+                <div class="form-group">
+                    <label>学号</label>
+                    <input type="text" name="num" class="form-control" placeholder="请输入学号" value="{{user&&user.num}}">
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" name="Password" class="form-control" placeholder="请输入密码" >
+                </div>
+                <div class="form-group">
+                    <label>部门</label>
+                    <select class="form-control" name="division">
+					<option value="辅导员" {{user&&user.division=='辅导员'?'selected':''}}>辅导员</option>
+					<option value="学生会主席团" {{user&&user.division=='学生会主席团'?'selected':''}}>学生会主席团</option>
+					<option value="人事管理部" {{user&&user.division=='人事管理部'?'selected':''}}>人事管理部</option>
+					<option value="外联部" {{user&&user.division=='外联部'?'selected':''}}>外联部</option>
+					<option value="学术部" {{user&&user.division=='学术部'?'selected':''}}>学术部</option>
+					<option value="信息部" {{user&&user.division=='信息部'?'selected':''}}>信息部</option>
+					<option value="权益部" {{user&&user.division=='权益部'?'selected':''}}>权益部</option>
+					<option value="文体部" {{user&&user.division=='文体部'?'selected':''}}>文体部</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>角色</label>
+                    <select class="form-control" name="role">
+                        <option value="normal" {{user&&user.role=='normal'?'selected':''}}>普通用户</option>
+                        <option value="admin" {{user&&user.role=='admin'?'selected':''}}>超级管理员</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>状态</label>
+                    <select class="form-control" name="state">
+                        <option value="0">启用</option>
+                        <option value="1">禁用</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="btn btn-primary" value="{{button}}">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /主体内容 -->
+{{/block}}
+{{block 'script'}}
+	<script type="text/html" id="tpl">
+		<li><%=message%></li>
+	</script>
+	<script type="text/javascript">
+        let usernameInp = document.getElementById('name');
+        let count=0;
+        $('#wmess').css('display','none');
+        usernameInp.onblur = function(){
+            console.log(count);
+            let username = this.value;
+            var reg = /^[\u4E00-\u9FA5A-Za-z0-9_]{2,10}$/;
+            if(!reg.test(username)){
+                var html = template('tpl',{message:"用户名长度为2到10，仅可包含中文英文数字和下划线"});
+                if(count){
+                  $('#wmess').children('li:last').remove();
+                }
+                count++;
+                $('#wmess').css('display','block');
+	        	$('#wmess').append(html);
+                return;
+            }else{
+            console.log('in else');
+                   if(count){
+                   $('#wmess').children('li:last').remove();
+                   $('#wmess').css('display','none');
+                }
+            }
+            
+        } 
+
+		
+	</script>
+{{/block}}
